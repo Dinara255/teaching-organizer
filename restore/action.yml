@@ -1,0 +1,23 @@
+name: 'Restore Cache'
+description: 'Restore Cache artifacts like dependencies and build outputs to improve workflow execution time'
+author: 'GitHub'
+inputs:
+  path:
+    description: 'The same list of files, directories, and wildcard patterns to restore cache that were used while saving it'
+    required: true
+  key:
+    description: 'An explicit key for restoring the cache'
+    required: true
+  restore-keys:
+    description: 'An ordered list of keys to use for restoring stale cache if no cache hit occurred for key. Note `cache-hit` returns false in this case.'
+    required: false
+outputs:
+  cache-hit:
+    description: 'A boolean value to indicate an exact match was found for the primary key'
+runs:
+  using: 'node16'
+  main: '../dist/restore/index.js'
+branding:
+  icon: 'archive'
+  color: 'gray-dark'
+  
